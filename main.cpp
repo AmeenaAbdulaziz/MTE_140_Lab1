@@ -182,43 +182,6 @@ void Polynomial::print() { //THIS WAS UPDATED-----------------------------------
 class Polynomial_Test {
     
 public:
-    void testDerivative() {
-        //test Case 1
-        int test1[2] = {3,-5};
-        Polynomial polynomial_Test(test1, 2);
-        polynomial_Test.derivative().print();
-        
-        //test Case 2
-        int test2[4] = {0};
-        Polynomial polynomial_Test2(test2, 4);
-        polynomial_Test2.derivative().print();
-        
-        //test Case 3
-        int test3[6] = {8,0,0,7,-12,3};
-        Polynomial polynomial_Test3(test3, 6);
-        polynomial_Test3.derivative().print();
-        
-    }
-    void test_subtract() {
-//        //test Case 1
-//        int test1[2] = {3,-5};
-//        int test2
-//        Polynomial polynomial_Test(test1, 2);
-//        polynomial_Test.derivative().print();
-//
-//        //test Case 2
-//        int test2[4] = {0};
-//        Polynomial polynomial_Test2(test2, 4);
-//        polynomial_Test2.derivative().print();
-//
-//        //test Case 3
-//        int test3[6] = {8,0,0,7,-12,3};
-//        Polynomial polynomial_Test3(test3, 6);
-//        polynomial_Test3.derivative().print();
-    }
-//    bool test_multiply() {
-//
-//    }
     
 };
 
