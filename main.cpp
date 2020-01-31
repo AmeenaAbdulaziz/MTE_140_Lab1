@@ -70,8 +70,9 @@ bool Polynomial::operator==(const Polynomial& target) {
             if (target.data[i] != data[i])
                 return false;
         }
+    	return true;
     }
-    return true;
+    return false;
 }
 
 Polynomial Polynomial::operator+(const Polynomial& target) {
@@ -180,94 +181,78 @@ void Polynomial::print() { //THIS WAS UPDATED-----------------------------------
 }
 
 class Polynomial_Test {
+    private:
+    	int nums1[5];
+		int nums2[7];
+		int howMany;
+		int howMany2;
+    	Polynomial poly1, poly2, poly3;
+    	
+    public:
+    Polynomial_Test () {
+    	nums1[0] = 1;
+    	nums1[1] = 2;
+    	nums1[2] = 3;
+    	nums1[3] = 4;
+    	nums1[4] = 5;
+    	nums2[0] = 2;
+    	nums2[1] = 4;
+    	nums2[2] = 6;
+    	nums2[3] = 4;
+    	nums2[4] = 9;
+    	nums2[5] = 9;
+    	nums2[6] = 10;
+	    howMany = 5;
+	    howMany2 = 7;
+	    poly1 = Polynomial(nums1, howMany);
+	    poly2 = Polynomial(nums1, howMany);
+	    poly3 = Polynomial(nums2, howMany2);
+    }
     
-    bool testConstructor1() {//no parameters
-      Polynomial test;
-      if (test.data.size() <= 1000 && test.data.size() >= 0){
-        for (int i = 0; i < test.data.size(); i++){
-          if (!(test.data[i] <= 1000 && test.data[i] >= -1000))
-            return false;
-        }
-        return true;
-      }
-      return false;
+//    bool testConstructor1() {
+//        assert(Polynomial test);
+//    }
+    
+    bool testEquals() {
+    	assert((poly1 == poly2) == true);
+    	assert(!(poly1 == poly3) == true);
     }
-
-
-    bool testConstructor2() {//from array + size
-      const int SIZE = 5;
-      int arr[SIZE] = {1, 2, 3, 4, 5};
-      Polynomial test (arr, SIZE);
-      if (test.data.size() == SIZE){
-        for (int i = 0; i < SIZE; i++){
-          if (!(test.data[i] == arr[i]))
-            return false;
-        }
-        return true;
-      }
-      return false;
+    
+    bool testAdd() {
+    	int testArr1[] = {2, 4, 6, 8, 10};
+    	int testArr2[] = {3, 6, 9, 8, 14, 9, 10};
+    	Polynomial testAdd1(testArr1, howMany);
+    	Polynomial testAdd2(testArr2, howMany2);
+    	assert((poly1 + poly2) == testAdd1);
+    	assert((poly1 + poly3) == testAdd2);
     }
-
-
-    bool testConstructor3() {//from file
-      const int SIZE = 5;
-      int fileContents[SIZE] = {3, 4, 1, 5, 9};
-      string fileName = "test.txt";
-
-      Polynomial test ("test.txt");
-
-      if (test.data.size() == SIZE){
-        for (int i = 0; i < SIZE; i++){
-          if (!(test.data[i] == fileContents[i]))
-            return false;
-        }
-        return true;
-      }
-      return false;
+    
+    bool testSub() {
+    	int testArr1[]= {-1, -2, -3, 0, -4, 9, 10};
+    	int testArr2[] = {1, 2, 3, 0, 4, 9 ,10};
+    	Polynomial testSub1(testArr1, howMany2);
+    	Polynomial testSub2(testArr2, howMany2);
+    	assert((poly1 - poly3) == testSub1);
+    	assert((poly3 - poly1) == testSub2);
     }
-
-
-    bool testConstructor4(){//copy
-      const int SIZE = 5;
-      int arr[SIZE] = {1, 2, 3, 4, 5};
-      Polynomial reference (arr, SIZE);
-      Polynomial copy (reference);
-      
-      if (copy.data.size() == SIZE){
-        for (int i = 0; i < SIZE; i++){
-          if (!(copy.data[i] == reference.data[i]))
-            return false;
-        }
-        return true;
-      }
-      return false;
-    }
-
-  public:
-    void run(){
-      if (testConstructor1())
-        cout << "Test Constructor1 Passed";
-      else
-        cout <<"Test Constructor1 Not Passed";
-      cout << endl;
-
-      if (testConstructor2())
-        cout << "Test Constructor2 Passed";
-      else
-        cout <<"Test Constructor2 Not Passed";
-      cout << endl;
-      
-      if (testConstructor3())
-        cout << "Test Constructor3 Passed";
-      else
-        cout <<"Test Constructor3 Not Passed";
-      cout << endl;
-      
-      if (testConstructor4())
-        cout << "Test Constructor4 Passed";
-      else
-        cout <<"Test Constructor4 Not Passed";
-      cout << endl;
+    
+    void run () {
+//    	testConstructor1();
+    	if(testEquals()) {
+    		cout << "== passed" << endl;
+    	} else {
+    		cout << "== failed" << endl;	
+    	}
+    	if(testAdd()) {
+    		cout << "+ passed" << endl;
+    	} else {
+    		cout << "+ failed" << endl;	
+    	}
+    	if(testSub()) {
+    		cout << "- passed" << endl;
+    	} else {
+    		cout << "- failed" << endl;	
+    	}
     }
 };
 
