@@ -99,29 +99,34 @@ Polynomial Polynomial::operator+(const Polynomial& target) {
 
 Polynomial Polynomial::operator-(const Polynomial& target) {
     int small = (int)data.size();
+    int big = (int)target.data.size();
     bool target_small = true;
     bool big_min_small = true;
     Polynomial curr;
-    
+
     if (data.size() > target.data.size()) {
         small = (int)target.data.size();
+        big = (int)data.size();
         curr = Polynomial(*this);
         target_small = false;
     } else {
         curr = Polynomial (target);
         big_min_small = false;
     }
-    
+
     for (int i = 0; i < small; i ++) {
         if (target_small)
             curr.data[i] -= data[i];
         else
             curr.data[i] -= target.data[i];
-        if (!big_min_small)
-            curr.data[i] *= -1;
     }
     
+    if (!big_min_small)
+        for (int i = 0; i < big; i ++)
+            curr.data[i] *= -1;
+    
     return curr;
+    
 }
 
 Polynomial Polynomial::operator*(const Polynomial& target) {
@@ -199,26 +204,31 @@ public:
         polynomial_Test3.derivative().print();
         
     }
-    void test_subtract() {
-//        //test Case 1
-//        int test1[2] = {3,-5};
-//        int test2
-//        Polynomial polynomial_Test(test1, 2);
-//        polynomial_Test.derivative().print();
+ void test_subtract() {
+        //test Case 1 ---- this works!!!!
+        int test1[2] = {3,-5};
+        int test2[4] = {9,-2,4,5};
+        Polynomial polynomial_Test(test1, 2);
+        Polynomial polynomial_Test2(test2, 4);
+        Polynomial result = polynomial_Test - polynomial_Test2;
+        result.print();
+
+//        //test Case 2 ---- this works!!!!
+        int test3[2] = {3,-5};
+        int test4[4] = {9,-5,0,-9};
+        Polynomial polynomial_Test3(test3, 2);
+        Polynomial polynomial_Test4(test4, 4);
+        Polynomial result2 = polynomial_Test4 - polynomial_Test3;
+        result2.print();
 //
-//        //test Case 2
-//        int test2[4] = {0};
-//        Polynomial polynomial_Test2(test2, 4);
-//        polynomial_Test2.derivative().print();
-//
-//        //test Case 3
-//        int test3[6] = {8,0,0,7,-12,3};
-//        Polynomial polynomial_Test3(test3, 6);
-//        polynomial_Test3.derivative().print();
+//        //test Case 3 --- ummm what the hell
+        int test[1] = {0};
+        int test5[6] = {1,0,7,-12,3};
+        Polynomial polynomial_Test5(test, 2);
+        Polynomial polynomial_Test6(test5, 5);
+        Polynomial result3 = polynomial_Test5 - polynomial_Test6;
+        result3.print();
     }
-//    bool test_multiply() {
-//
-//    }
     
 };
 
