@@ -11,7 +11,6 @@
 #include <random>
 #include <fstream>
 #include <vector>
-#include <cassert>
 
 using namespace std;
 
