@@ -144,9 +144,9 @@ Polynomial Polynomial::operator*(const Polynomial& target) {
     for (int i = 0; i < small; i ++) {
         for (int j = 0; j < large; j++){
             if (target_small)
-                curr.data[i+j] = data[j] * target.data[i];
+                curr.data[i+j] += data[j] * target.data[i];
             else
-                curr.data[i+j] = data[i] * target.data[j];
+                curr.data[i+j] += data[i] * target.data[j];
         }
     }
     return curr;
