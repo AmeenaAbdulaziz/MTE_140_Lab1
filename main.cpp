@@ -181,8 +181,97 @@ void Polynomial::print() { //THIS WAS UPDATED-----------------------------------
 }
 
 class Polynomial_Test {
+
+    bool testConstructor1() {//no parameters
+      Polynomial test;
+      if (test.data.size() <= 1000 && test.data.size() >= 0){
+        for (int i = 0; i < test.data.size(); i++){
+          if (!(test.data[i] <= 1000 && test.data[i] >= -1000))
+            return false;
+        }
+        return true;
+      }
+      return false;
+    }
+
+
+    bool testConstructor2() {//from array + size
+      const int SIZE = 5;
+      int arr[SIZE] = {1, 2, 3, 4, 5};
+      Polynomial test (arr, SIZE);
+      if (test.data.size() == SIZE){
+        for (int i = 0; i < SIZE; i++){
+          if (!(test.data[i] == arr[i]))
+            return false;
+        }
+        return true;
+      }
+      return false;
+    }
+
+
+    bool testConstructor3() {//from file
+      const int SIZE = 5;
+      int fileContents[SIZE] = {3, 4, 1, 5, 9};
+      string fileName = "test.txt";
+
+      Polynomial test ("test.txt");
+
+      if (test.data.size() == SIZE){
+        for (int i = 0; i < SIZE; i++){
+          if (!(test.data[i] == fileContents[i]))
+            return false;
+        }
+        return true;
+      }
+      return false;
+    }
+
+
+    bool testConstructor4(){//copy
+      const int SIZE = 5;
+      int arr[SIZE] = {1, 2, 3, 4, 5};
+      Polynomial reference (arr, SIZE);
+      Polynomial copy (reference);
+      
+      if (copy.data.size() == SIZE){
+        for (int i = 0; i < SIZE; i++){
+          if (!(copy.data[i] == reference.data[i]))
+            return false;
+        }
+        return true;
+      }
+      return false;
+    }
+
+  public:
+    void run(){
+      if (testConstructor1())
+        cout << "Test Constructor1 Passed";
+      else
+        cout <<"Test Constructor1 Not Passed";
+      cout << endl;
+
+      if (testConstructor2())
+        cout << "Test Constructor2 Passed";
+      else
+        cout <<"Test Constructor2 Not Passed";
+      cout << endl;
+      
+      if (testConstructor3())
+        cout << "Test Constructor3 Passed";
+      else
+        cout <<"Test Constructor3 Not Passed";
+      cout << endl;
+      
+      if (testConstructor4())
+        cout << "Test Constructor4 Passed";
+      else
+        cout <<"Test Constructor4 Not Passed";
+      cout << endl;
+    }
     
-public:
+    
     
 };
 
