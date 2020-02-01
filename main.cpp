@@ -205,7 +205,7 @@ public:
         
     }
  void test_subtract() {
-        //test Case 1 ---- this works!!!!
+        //test Case 1
         int test1[2] = {3,-5};
         int test2[4] = {9,-2,4,5};
         Polynomial polynomial_Test(test1, 2);
@@ -213,7 +213,7 @@ public:
         Polynomial result = polynomial_Test - polynomial_Test2;
         result.print();
 
-//        //test Case 2 ---- this works!!!!
+//        //test Case 2
         int test3[2] = {3,-5};
         int test4[4] = {9,-5,0,-9};
         Polynomial polynomial_Test3(test3, 2);
@@ -221,12 +221,38 @@ public:
         Polynomial result2 = polynomial_Test4 - polynomial_Test3;
         result2.print();
 //
-//        //test Case 3 --- ummm what the hell
+//        //test Case 3
         int test[1] = {0};
         int test5[6] = {1,0,7,-12,3};
         Polynomial polynomial_Test5(test, 2);
         Polynomial polynomial_Test6(test5, 5);
         Polynomial result3 = polynomial_Test5 - polynomial_Test6;
+        result3.print();
+    }
+    
+    void test_multiply() {
+        //test Case 1
+        int test1[2] = {3,-5};
+        int test2[4] = {9,-2,4,5};
+        Polynomial polynomial_Test(test1, 2);
+        Polynomial polynomial_Test2(test2, 4);
+        Polynomial result = polynomial_Test * polynomial_Test2;
+        result.print();
+        
+        //test Case 2
+        int test3[3] = {3,-5,7};
+        int test4[4] = {9,-5,0,-9};
+        Polynomial polynomial_Test3(test3, 3);
+        Polynomial polynomial_Test4(test4, 4);
+        Polynomial result2 = polynomial_Test4 * polynomial_Test3;
+        result2.print();
+
+        //test Case 3 ---this is good
+        int test[2] = {0};
+        int test5[6] = {8,0,0,7,-12,3};
+        Polynomial polynomial_Test5(test, 2);
+        Polynomial polynomial_Test6(test5, 6);
+        Polynomial result3 = polynomial_Test5 * polynomial_Test6;
         result3.print();
     }
     
